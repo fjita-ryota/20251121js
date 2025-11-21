@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+div {
+  margin: 2rem;
+}
+
+/* グラデーションボタン */
+.btn-container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 320px;
+  border-radius: 12px;
+}
+.btn-inner {
+  margin: 6px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-container::before {
+  content: "";
+  background: linear-gradient(90deg, #0bd, #f6b);
+  height: 500px;
+  width: 500px;
+  position: absolute;
+  animation: rotate-line 4s linear infinite;
+}
+@keyframes rotate-line {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ぐるっとラインが囲む */
+.btn-container-adv {
+  position: relative;
+  max-width: 320px;
+}
+.btn-inner-adv {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-svg-adv {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+.btn-rect-adv {
+  fill: none;
+  stroke: #0bd;
+  stroke-width: 6px;
+  stroke-dasharray: 400%;
+  stroke-dashoffset: 400%;
+}
+/* activeクラスが付与された瞬間からアニメーション開始 */
+.btn-rect-adv.active {
+  animation: line 1s forwards;
+}
+@keyframes line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
